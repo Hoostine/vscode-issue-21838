@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Server",
+            "protocol": "inspector",
+            "program": "${workspaceRoot}\\server.js",
+            "preLaunchTask": "npm install"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Browser",
+            "url": "http://localhost:3000",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "runtimeArgs": [
+                "--incognito"
+            ],
+            "pathMapping": {
+                "/": "${workspaceRoot}/pub"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full Stack",
+            "configurations": [ "Server", "Browser" ],
+            "preLaunchTask": "Build (watch) frontend"
+        }
+    ]
+}
